@@ -18,24 +18,11 @@ System requirements:
 - Kernel: 6.8.0-52-generic
 - Driver Version: 535.183.01   CUDA Version: 12.2 (Dual NVIDIA GeForce RTX 2080 Ti)
 - nvidia-container-toolkit: 1.14.3-1
+- Python 3.10.12
 
 ## Installation and execution
 
 ### Installation
-# Installation of the daeplanner
-
-## Possible Prerequisites
-The system has been tested with the following versions of drivers etc. It might work with other combinations of versions. For completeness are they listed here.
-
-- Docker version 24.0.7, build afdd53b (`docker -v`)
-- OS: Ubuntu 22.04.3 LTS (`lsb_release -a`)
-- Kernel: 6.2.0-37-generic (`uname -r`)
-- NVIDIA DRIVER: 535.129.03 (`nvidia-smi`)
-- CUDA 12.2
-- nvidia-container-toolkit: 1.14.3-1 (`apt-cache policy nvidia-container-toolkit`) 
-- Python 3.10.12
-
-## Installation instructions
 Follow the following steps to be able to run the planners.
 
 1. Install and setup your [docker solution](https://docs.docker.com/engine/security/rootless/).
