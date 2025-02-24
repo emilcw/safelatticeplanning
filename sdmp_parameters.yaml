@@ -1,0 +1,237 @@
+### Configuration file for the experiments to be run in the motion planning scenarios.
+
+#### If you want to run scenarios, recommened setup is ####
+# motion_planners - Your choice
+# tests - live
+# scenarios - the ones you want to test
+# world - test
+# mode - static
+
+#### If you don't want to run a scenario ####
+# Currently you need to specify a scenario in order to use the motion planners
+# since the lattice planner will not plan until it has a valid_scenario.
+
+# Will make the simulation sleep 10000 seconds after finishing
+debug: False
+
+# Set maximum simulation time in seconds
+max_time: 900
+
+# Set the number of simulations runs in a certain scenario for a certain motion planner
+simulation_runs: 1
+
+# Set DJI100 Safety radius in meters
+dji_safety_radius: 1.0
+# Note: Dynamic obstacle safety radius is set in Scenario.cpp
+# NOTE: If too big, will the dji not be able to complete
+# certain scenarios since the passages simply are too narrow
+
+# Select preferred location tolerance for each planner
+location_tolerance:
+  lattice_planner: 0.01
+  time_based_rrt: 0.5
+  rrt_star: 0.5
+  lattice_planner_improved: 0.01
+  setup_scenario: 0.01                #Used to move dji to correct starting point       
+  setup_scenario_time_based_rrt: 0.5  #Used to move dji to correct starting point
+
+# Select which motion planners to use
+motion_planners:
+#  rrt_star:
+#    image: "rrt_star"
+#  time_based_rrt:
+#    image: "time_based_rrt"
+#  lattice_planner:
+#    image: "lattice_planner"
+  lattice_planner_improved:
+    image: "lattice_planner_improved"
+#  A-star-low-res:
+#    image: "lattice_planner"
+#  A-star-high-res:
+#    image: "lattice_planner"
+
+# Select test mode (Currently only live supported)
+tests:
+#  - single
+#  - full
+  - live
+#  - eval-prim-exec
+#  - random-goals
+
+# Select scenarios to run
+static_scenarios:
+#- blind_corner_static
+#- dynamic_static
+#- dynamic2_static
+#- dynamic3_static
+#- indoor11_static
+#- survival_static
+#- corridor2_static
+#- old_survival_static
+#- moving_guard_static
+#- indoor1_static
+#- indoor2_static
+#- indoor3_static
+#- corridor_static
+#- indoor_empty
+#- dead_end
+#- empty
+#- wall2
+#- wall
+#- wall3D
+
+dynamic_scenarios:
+- blind_corner
+#- dynamic
+#- dynamic2
+#- dynamic3
+#- corridor2
+#- indoor11
+#- survival
+#- old_survival
+#- corridor
+#- moving_guard
+#- indoor1
+#- indoor2
+#- indoor3
+
+
+# Currently not used scenarios
+#- crossing_path # Tries to stay in one position
+#- corridor_fast #Dji does not find a path to avoid collision here
+#- indoor3_corridor #Tries to stay in one position
+#- indoor_corridor #Works but not relevant
+#- indoor_corner #Works but not relevant
+#- blocking_wall #Does not find a path, which is logical given how the scenario looks like. Might be good to showcase LOCAL.
+
+# Supposed to increase the difficulty for a scenario, default = -1
+scenario_parameter: 1
+
+# Select which world to run the scenarios in (Default is test since we don't require Gazebo simulation for this)
+worlds:
+  - test
+#  - cafe
+#  - maze
+#  - apartment
+#  - tunnel
+#  - field
+#  - auditorium
+#  - exhibition
+#  - crosswalks
+#  - patrol
+#  - granso
+#  - granso2
+
+# Select mode (Not used since worlds are either static or dynamic)
+modes:
+  - static
+#  - dynamic
+
+# Spawn position for dji0 in physical world, not in scenario. In scenario will it automatically be moved to the start position.
+# NOTE: Not the same as the start position from a SCENARIO
+# this is where we spawn the dji in the actual WORLD, 
+# then the scenario_setup node takes over and moves the dji0
+# to the dji to the scenario specific starting point
+start_position:
+  test:
+    - 0
+    - 0
+    - 0.5
+  cafe:
+    - 0
+    - 0
+    - 0.5
+  maze:
+    - 10
+    - 10
+    - 2
+  apartment:
+    - 0
+    - 0
+    - 0.5
+  tunnel:
+    - 0
+    - 0
+    - 0.5
+  field:
+    - 0
+    - 0
+    - 0.5
+  auditorium:
+    - 0
+    - 0
+    - 0.5
+  exhibition:
+    - 0
+    - 0
+    - 0.5
+  crosswalks:
+    - 0
+    - 0
+    - 0.5
+  patrol:
+    - 0
+    - 0
+    - 0.5
+  granso:
+    - 5
+    - 5
+    - 2
+  granso2:
+    - 5
+    - 5
+    - 2
+
+
+end_position:
+  test:
+    - 0
+    - 0
+    - 0.5
+  cafe:
+    - 0
+    - 0
+    - 0.5
+  maze:
+    - 10 
+    - 10 
+    - 2 
+  apartment:
+    - 0
+    - 0
+    - 0.5
+  tunnel:
+    - 0
+    - 0
+    - 0.5
+  field:
+    - 0
+    - 0
+    - 0.5
+  auditorium:
+    - 0
+    - 0
+    - 0.5
+  exhibition:
+    - 0
+    - 0
+    - 0.5
+  crosswalks:
+    - 0
+    - 0
+    - 0.5
+  patrol:
+    - 0
+    - 0
+    - 0.5
+  granso:
+    - 5
+    - 5
+    - 2
+  granso2:
+    - 5
+    - 5
+    - 2
+
+
+

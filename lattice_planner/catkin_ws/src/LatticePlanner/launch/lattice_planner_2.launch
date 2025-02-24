@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="mav_name" default="DjiMatrice" />
+  <arg name="namespace" default="/"/>
+  <group ns="$(arg namespace)">
+    <node name="latticePlanner_node" pkg="lattice_planner" type="latticePlanner_node" respawn="true" clear_params="true" output="screen">
+      <!-- <rosparam file="$(find mav_nonlinear_mpc)/resources/nonlinear_mpc_$(arg mav_name).yaml" /> -->
+      <param name="primitive_path" value="$(find lattice_planner)/generate_primitives/primitives/" />
+      <param name="number_of_primitive_groups" value="8" />
+      <param name="primitive_amount_group_1" value="10" />
+      <param name="primitive_amount_group_2" value="16" />
+      <param name="primitive_amount_group_3" value="30" />
+      <param name="primitive_amount_group_4" value="48" />
+      <param name="primitive_amount_group_5" value="32" />
+      <param name="primitive_amount_group_6" value="16" />
+      <param name="primitive_amount_group_7" value="24" />
+      <param name="primitive_amount_group_8" value="10" />
+    <remap from="~visualization_obstacles" to="/visualization_obstacles" />
+    <remap from="~visualization_plan_trajectory" to="/visualization_plan_trajectory" />
+    <remap from="~visualization_plan_primitive" to="/visualization_plan_primitive" />
+    <remap from="/DjiMatrice/dji_sdk/local_position" to="/dji_sdk/local_position" />
+    <remap from="/DjiMatrice/dji_sdk/velocity" to="/dji_sdk/velocity" />
+    <remap from="/DjiMatrice/visualization_obstacles" to="/visualization_obstacles" />
+    <remap from="/DjiMatrice/visualization_plan_trajectory" to="/visualization_plan_trajectory" />
+    </node>
+  </group>
+</launch>

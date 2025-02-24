@@ -1,0 +1,12 @@
+Generated trajectory:
+Group: 333h 
+ID: 3 
+Name: geometric_backward_short_x 
+finalTime: 0.800000  
+Cost: 0.800000  
+ToFromLabel: x y z vx vy vz 
+From: 0.000000 0.000000 2.000000 0.000000 0.000000 0.000000 
+To: -0.500000 0.000000 2.000000 0.000000 0.000000 0.000000 
+Trajectory: 
+t        x        y         z        vx       vy       vz       roll     pitch     yaw     thrust 
+0.800000 -0.500000 0.000000 2.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 9.806000

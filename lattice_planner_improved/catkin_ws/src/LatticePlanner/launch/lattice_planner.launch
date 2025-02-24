@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="namespace" default="/"/>
+  <arg name="test" default=""/>
+  <arg name="scenario" default=""/>
+  <arg name="respawn" default="false" />
+  <arg name="best_effort" default="true" />
+  <arg name="log_path" default="logs/" />
+  <arg name="log_name" default="" />
+  <arg name="seed" default="0" />
+  <arg name="enable_visualization_close_proximity" default="false"/>
+  <arg name="enable_visualization_grid" default="false"/>
+  <arg name="visualization_cube_range" default="5 1 0.5 0"/>
+  <arg name="octomap" default="/$(arg namespace)" />
+
+   <!-- Additions from Emil Wiman-->
+  
+   <!-- Double check these so they are the same for a fair comparison!-->
+
+   <!-- Planing and replanning three times as much as in lattice_planner since we do the division in the code instead -->
+  <arg name="planning_time" default="9.0" />
+  <arg name="replanning_time" default="3.0" />
+  <arg name="dji_safety_radius" default="1.0" />
+  <arg name="scenario_parameter" default="-1"/>
+  <arg name="location_tolerance" default="0.01"/>
+  <arg name="use_stand_still" default="true" />
+  <arg name="use_predictions" default="true" />
+  <arg name="use_geometric_secondary_search" default="true" />
+  <arg name="use_only_geometric_search" default="false" />
+  <arg name="plan_duration_minimum" default="8.0" />
+  <arg name="closed_set_type" default="SetWaitTime" />
+
+  <!-- Enable/Disable Improvements from Emil Wiman-->
+  <arg name="adaptive_planning" default="true" />
+  <arg name="survival_planning" default="true" />
+  <arg name="emergency_trajectories" default="true" />
+
+  <!-- Visualization (Compute-Intensive)-->
+  <arg name="visualize_frontiers" default="false"/>
+  <arg name="visualize_closed_set" default="false"/>
+  <arg name="visualize_obstacles" default="false"/>
+  
+  <group ns="$(arg namespace)">
+    <node name="latticePlanner_node" pkg="lattice_planner" type="latticePlanner_node" respawn="$(arg respawn)"
+          clear_params="true" output="screen">
+ <!-- launch-prefix="valgrind -\-leak-check=yes"  -->
+      <param name="planning_time" value="$(arg planning_time)" />
+      <param name="replanning_time" value="$(arg replanning_time)" />
+      <param name="dji_safety_radius" value="$(arg dji_safety_radius)" />
+      <param name="adaptive_planning" value="$(arg adaptive_planning)" />
+      <param name="survival_planning" value="$(arg survival_planning)" />
+      <param name="emergency_trajectories" value="$(arg emergency_trajectories)" />
+      <param name="test" value="$(arg test)" />
+      <param name="scenario" value="$(arg scenario)" />
+      <param name="scenario_parameter" value="$(arg scenario_parameter)" />
+      <param name="location_tolerance" value="$(arg location_tolerance)" />
+      <param name="use_sim_time" value="true" />
+      <param name="visualization_cube_range" value="$(arg visualization_cube_range)" />
+      <param name="enable_visualization_grid" value="$(arg enable_visualization_grid)" />
+      <param name="enable_visualization_close_proximity" value="$(arg enable_visualization_close_proximity)" />
+      <param name="visualize_frontiers" value="$(arg visualize_frontiers)" />
+      <param name="visualize_closed_set" value="$(arg visualize_closed_set)" />
+      <param name="visualize_obstacles" value="$(arg visualize_obstacles)" />
+
+      <remap from="octomap_full" to="$(arg octomap)/octomap_full"/>
+      <remap from="teleport/pose" to="sim_pose_reset"/>
+
+      <param name="use_stand_still" value="$(arg use_stand_still)" />
+      <param name="use_geometric_secondary_search" value="$(arg use_geometric_secondary_search)" />
+      <param name="use_only_geometric_search" value="$(arg use_only_geometric_search)" />
+      <param name="plan_duration_minimum" value="$(arg plan_duration_minimum)" />
+      <param name="closed_set_type" value="$(arg closed_set_type)" />
+      <param name="best_effort" value="$(arg best_effort)" />
+      <param name="use_predictions" value="$(arg use_predictions)" />
+
+      <param name="log_name" value="$(arg log_name)" />
+      <param name="log_path" value="$(find lattice_planner)/$(arg log_path)" />
+      <param name="seed" value="$(arg seed)" />
+
+
+      <!-- <rosparam file="$(find mav_nonlinear_mpc)/resources/nonlinear_mpc_$(arg mav_name).yaml" /> -->
+      <param name="primitive_path" value="$(find lattice_planner)/generate_primitives/primitives/" />
+      <param name="number_of_primitive_groups" value="15" />
+      <param name="primitive_amount_group_0" value="1" />
+      <param name="primitive_amount_group_1" value="10" />
+      <param name="primitive_amount_group_2" value="16" />
+      <param name="primitive_amount_group_3" value="30" />
+      <param name="primitive_amount_group_4" value="48" />
+      <param name="primitive_amount_group_5" value="32" />
+      <param name="primitive_amount_group_6" value="16" />
+      <param name="primitive_amount_group_7" value="16" />
+      <param name="primitive_amount_group_8" value="10" />
+      <param name="primitive_amount_group_9" value="30" />
+      <param name="primitive_amount_group_10" value="0" />
+      <param name="primitive_amount_group_11" value="0" />
+      <param name="primitive_amount_group_12" value="32" />
+      <param name="primitive_amount_group_13" value="16" />
+      <param name="primitive_amount_group_14" value="16" />
+    </node>
+  </group>
+</launch>

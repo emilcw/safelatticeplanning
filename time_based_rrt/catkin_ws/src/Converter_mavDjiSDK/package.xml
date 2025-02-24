@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<package>
+  <name>converter_mav_dji_sdk</name>
+  <version>0.0.0</version>
+  <description>The converter_mav_dji_sdk package</description>
+   <maintainer email="oskar.ljungqvist@liu.se">Oskar Ljungqvist</maintainer>
+
+  <license>TODO</license>
+
+
+  <!-- Url tags are optional, but multiple are allowed, one per tag -->
+  <!-- Optional attribute type can be: website, bugtracker, or repository -->
+  <!-- Example: -->
+  <!-- <url type="website">http://wiki.ros.org/Converter_mavDjiSDK</url> -->
+
+ <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>catkin_simple</buildtool_depend>
+  
+  <build_depend>catkin_simple</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>mav_msgs</build_depend>
+  <build_depend>cmake_modules</build_depend>	
+  <build_depend>dynamic_reconfigure</build_depend>
+  <build_depend>tf</build_depend>
+
+  <run_depend>catkin_simple</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>mav_msgs</run_depend>
+  <run_depend>nav_msgs</run_depend>
+  <run_depend>cmake_modules</run_depend>	
+  <run_depend>dynamic_reconfigure</run_depend>
+  <run_depend>tf</run_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>

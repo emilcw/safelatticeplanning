@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!--This launch file starts the laser to pointcloud converter that 
+is used to fill the octomap with voxels from laser data.-->
+
+<launch>
+  <arg name="namespace" default="/"/>
+  <group ns="$(arg namespace)">
+  <arg name='max_scans'/>
+  <node type="laser_scan_assembler" pkg="laser_assembler" name="my_assembler">
+    <remap from="scan" to="laser_scan"/>
+    <param name="max_scans" type="int" value="$(arg max_scans)" />
+    <param name="fixed_frame" type="string" value="hokuyo_laser_link" />
+  </node>
+  <node type ="laser2pc.py" pkg="laser_to_pcl" name="laser2pc"/>
+  </group>
+</launch>

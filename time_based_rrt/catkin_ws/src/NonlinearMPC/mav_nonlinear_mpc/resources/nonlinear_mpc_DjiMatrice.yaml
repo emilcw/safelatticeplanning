@@ -1,0 +1,52 @@
+
+## Controller Parameters:
+mass: 2.895
+roll_time_constant: 0.253
+pitch_time_constant: 0.267
+roll_gain: 1.101
+pitch_gain: 1.097
+linear_drag_coefficients: [ 0.010000 , 0.010000, 0.0000]
+
+## REAL FLIGHT PENALTIES & CONSTRAINTS (control refs: 0,0,g, required until better thrust model)
+
+# dynamic config default values:
+q_x : 5 #25 Since model (angle constraints?) seem more off than usual, this is lowered for now
+q_y : 5 #25
+q_z : 7 #70
+
+q_vx : 0.1 #7
+q_vy : 0.1 #7
+q_vz : 0.1 #18
+
+q_roll : 0.1 #30
+q_pitch: 0.1 #30
+
+r_roll  : 0.1 #105
+r_pitch : 0.1 #105 # default: 105
+r_thrust : 0.1 #1 # Increased due to unrealistic thrust dynamics, default 1
+#r_roll  : 305
+#r_pitch : 305 # default: 105
+#r_thrust : 30 # Increased due to unrealistic thrust dynamics, default 1
+
+roll_max: deg(10.0) # REAL FLIGHTS
+pitch_max: deg(10.0) # REAL FLIGHTS
+
+thrust_min: 5 # default
+#thrust_min: 8 
+thrust_max: 15 # default is 20
+#thrust_max: 12
+
+K_yaw: 1.8
+
+Ki_xy: 0.2
+Ki_z: 0.3
+position_error_integration_limit: 2
+antiwindup_ball: 0.4
+
+enable_offset_free : false # default, disturbance correction. NOTE: Try turning off when thrust center calibrated, probably the KF model is wrong too...
+#enable_offset_free : false
+#enable_integrator : true  # default, seems to be a bit unstable for agressive maneauvers, maybe only for position hold / trajectory following?
+enable_integrator : false
+
+sampling_time: 0.02    #IMPORTANT: set this equal to the rate of odometry msg
+prediction_sampling_time: 0.1

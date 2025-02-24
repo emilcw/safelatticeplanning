@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!--Used in spawn_start_m100.launch-->
+
+<launch>
+  <arg name="name" default="m100_me"/>
+  <!-- TODO: Add flag for indicating with/without laser -->
+  <!--<arg name="model" default="$(find hku_m100_description)/urdf/hku_m100.urdf.xacro"/> -->
+  <arg name="model" default="$(find hku_m100_description)/urdf/hku_m100_gimbal_laser.urdf.xacro"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.3"/>
+   
+  <arg name="world_frame" default="world"/> <!-- This should actually be "/world". See https://github.com/ros-simulation/gazebo_ros_pkgs/pull/324 -->
+  <arg name="base_link_frame" default="$(arg tf_prefix)/base_link"/>
+
+  <!-- send the robot XML to param server -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg model)' name:=$(arg name) base_link_frame:=$(arg base_link_frame) world_frame:=$(arg world_frame)" />
+  <param name="base_link_frame" type="string" value="$(arg base_link_frame)"/>
+  <param name="world_frame" type="string" value="$(arg world_frame)"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description
+           -urdf
+           -x $(arg x)
+           -y $(arg y)
+           -z $(arg z)
+           -model $(arg name)"
+        respawn="false" output="screen"/>  
+  
+</launch>
+

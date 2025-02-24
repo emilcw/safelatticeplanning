@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>collision_avoidance_m100_gazebo</name>
+  <version>0.0.1</version>
+  <description>The collision_avoidance_m100_gazebo package</description>
+
+  <maintainer email="mattias.tiger@liu.se">Mattias Tiger</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <!--<depend>dji_sdk</depend>-->
+  <depend>tf</depend>
+
+  <export>
+  </export>
+</package>

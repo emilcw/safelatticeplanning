@@ -1,0 +1,16 @@
+<launch>
+
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.5"/>
+
+  <param name="x" type="double" value="$(arg x)"/>
+  <param name="y" type="double" value="$(arg y)"/>
+  <param name="z" type="double" value="$(arg z)"/>
+
+  <arg name="namespace" default="/"/>
+  <group ns="$(arg namespace)">
+    <node name="motion_model_simulator" pkg="motion_models" type="motion_sim_matrice_m100" respawn="true" clear_params="true" output="screen">
+    </node>
+  </group>
+</launch>

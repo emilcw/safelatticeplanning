@@ -1,0 +1,97 @@
+16
+
+0
+up_down_smooth_fwdxfwdy_upz_fwdxfwdy_downz
+1.9
+0.0 0.0 2.0 0.5774 0.5774 0.5774
+1.0 1.0 2.0 0.5774 0.5774 -0.5774
+
+1
+up_down_smooth_fwdxfwdy_downz_fwdxfwdy_upz
+1.9
+0.0 0.0 2.0 0.5774 0.5774 -0.5774
+1.0 1.0 2.0 0.5774 0.5774 0.5774
+
+2
+up_down_smooth_revxrevy_upz_revxrevy_downz
+1.9
+0.0 0.0 2.0 -0.5774 -0.5774 0.5774
+-1.0 -1.0 2.0 -0.5774 -0.5774 -0.5774
+
+3
+up_down_smooth_revxrevy_downz_revxrevy_upz
+1.9
+0.0 0.0 2.0 -0.5774 -0.5774 -0.5774
+-1.0 -1.0 2.0 -0.5774 -0.5774 0.5774
+
+4
+up_down_smooth_fwdxrevy_upz_fwdxrevy_downz
+1.9
+0.0 0.0 2.0 0.5774 -0.5774 0.5774
+1.0 -1.0 2.0 0.5774 -0.5774 -0.5774
+
+5
+up_down_smooth_fwdxrevy_downz_fwdxrevy_upz
+1.9
+0.0 0.0 2.0 0.5774 -0.5774 -0.5774
+1.0 -1.0 2.0 0.5774 -0.5774 0.5774
+
+6
+up_down_smooth_revxfwdy_upz_revxfwdy_downz
+1.9
+0.0 0.0 2.0 -0.5774 0.5774 0.5774
+-1.0 1.0 2.0 -0.5774 0.5774 -0.5774
+
+7
+up_down_smooth_fwdxrevy_downz_fwdxrevy_upz
+1.9
+0.0 0.0 2.0 -0.5774 0.5774 -0.5774
+-1.0 1.0 2.0 -0.5774 0.5774 0.5774
+
+8
+up_down_smooth_fwdx_upz_fwdx_downz
+2.1
+0.0 0.0 2.0 0.7071 0.0 0.7071
+1.0 0.0 2.0 0.7071 0.0 -0.7071
+
+9
+up_down_smooth_revx_upz_revx_downz
+2.1
+0.0 0.0 2.0 -0.7071 0.0 0.7071
+-1.0 0.0 2.0 -0.7071 0.0 -0.7071
+
+10
+up_down_smooth_fwdx_downz_fwdx_upz
+2.1
+0.0 0.0 2.0 0.7071 0.0 -0.7071
+1.0 0.0 2.0 0.7071 0.0 0.7071
+
+11
+up_down_smooth_revx_downz_revx_upz
+2.1
+0.0 0.0 2.0 -0.7071 0.0 -0.7071
+-1.0 0.0 2.0 -0.7071 0.0 0.7071
+
+12
+up_down_smooth_fwdy_upz_fwdy_downz
+2.1
+0.0 0.0 2.0 0.0 0.7071 0.7071
+0.0 1.0 2.0 0.0 0.7071 -0.7071
+
+13
+up_down_smooth_revy_upz_revy_downz
+2.1
+0.0 0.0 2.0 0.0 -0.7071 0.7071
+0.0 -1.0 2.0 0.0 -0.7071 -0.7071
+
+14
+up_down_smooth_fwdy_downz_fwdy_upz
+2.1
+0.0 0.0 2.0 0.0 0.7071 -0.7071
+0.0 1.0 2.0 0.0 0.7071 0.7071
+
+15
+up_down_smooth_revy_downz_revy_upz
+2.1
+0.0 0.0 2.0 0.0 -0.7071 -0.7071
+0.0 -1.0 2.0 0.0 -0.7071 0.7071

@@ -1,0 +1,11 @@
+- git: {local-name: motion_models, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/motion_models.git'}
+- git: {local-name: catkin_simple, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/catkin_simple.git'}
+- git: {local-name: pysdf, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/pysdf.git'}
+- git: {local-name: gazebo2rviz, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/gazebo2rviz.git'}
+- git: {local-name: Onboard-SDK-ROS, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/Onboard-SDK-ROS.git'}
+- git: {local-name: Onboard-SDK, uri: 'git@gitlab.liu.se:srg/simulator/mirrors/Onboard-SDK.git'}
+- git: {local-name: LatticePlanner, uri: 'git@gitlab.liu.se:srg/simulator/LatticePlanner.git'}
+- git: {local-name: Converter_mavDjiSDK, uri: 'git@gitlab.liu.se:srg/simulator/Converter_mavDjiSDK.git'}
+- git: {local-name: NonlinearMPC, uri: 'git@gitlab.liu.se:srg/simulator/NonlinearMPC.git'}
+- git: {local-name: simulator-specifications, uri: 'git@gitlab.liu.se:srg/simulator/simulator-specifications.git'}
+- git: {local-name: hku_m100_description, uri: 'git@gitlab.liu.se:srg/simulator/hku_m100_description.git'}

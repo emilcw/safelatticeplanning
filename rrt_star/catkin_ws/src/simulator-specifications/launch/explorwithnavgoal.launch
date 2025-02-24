@@ -1,0 +1,9 @@
+
+<!-- Launch file for explorwithnavgoal.py (That is probably meant to send a nav_goal
+     to the exploration and start it.) 
+     
+     Currently NOT USED-->
+
+<launch>
+  <node name="explorwithnavgoal" pkg="aeplanner" type="explorwithnavgoal.py" output="screen"/>
+</launch>

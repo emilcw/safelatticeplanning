@@ -1,0 +1,12 @@
+Generated trajectory:
+Group: 333 
+ID: 7 
+Name: geometric_horizontal_diagonal_second_quadrant 
+finalTime: 2.300000  
+Cost: 2.300000  
+ToFromLabel: x y z vx vy vz 
+From: 0.000000 0.000000 2.000000 0.000000 0.000000 0.000000 
+To: -1.000000 1.000000 2.000000 0.000000 0.000000 0.000000 
+Trajectory: 
+t        x        y         z        vx       vy       vz       roll     pitch     yaw     thrust 
+2.300000 -1.000000 1.000000 2.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 9.806000

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+
+<!-- This launch file (Currently not used.)
+    * spawns the DJI100 in a specified (x,y,z)
+    * Start the motion model simulator and converter
+    * Start the controller (MPC)
+    * And should start the Motion Planner
+  -->
+
+<launch>
+  <arg name="name"/>
+  <arg name="x"/>
+  <arg name="y"/>
+  <arg name="z"/>
+  <arg name='controlled' default='1' />
+
+  <!-- Spawn and start m100 drone -->
+  <include file="$(find collision_avoidance_m100_gazebo)/launch/spawn_m100.launch">
+    <arg name='name' value="$(arg name)" />
+    <arg name="base_link_frame" default="$(arg name)__base_link"/>
+    <arg name="x" value="$(arg x)"/>
+    <arg name="y" value="$(arg y)"/>
+    <arg name="z" value="$(arg z)"/>    
+  </include>
+  <include file="$(find collision_avoidance_m100_gazebo)/launch/start_m100_interface.launch">
+    <arg name='name' value="$(arg name)" />
+    <arg name='controlled' value="$(arg controlled)" />
+  </include>
+  
+  <!-- Start dynamics simulation (and sdk converter) -->
+  <include file="$(find motion_models)/launch/motion_sim_matrice_m100.launch">
+    <arg name='namespace' value="$(arg name)" />
+  </include>
+  <include file="$(find converter_mav_dji_sdk)/launch/converter.launch">
+    <arg name='namespace' value="$(arg name)" />
+  </include>
+  
+  <!-- Start Controller (MPC) -->
+  <include file="$(find mav_nonlinear_mpc)/launch/mav_nonlinear_mpc_ca.launch">
+    <arg name='namespace' value="$(arg name)" />
+  </include>
+  
+  <!-- Start Motion Planner (Lattice Planner) -->
+  <!-- ... -->
+  
+</launch>

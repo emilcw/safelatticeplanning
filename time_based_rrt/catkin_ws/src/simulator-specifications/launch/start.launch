@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="world" default="cafe"/>
+  <arg name="mode" default="static" />
+  <arg name="world_launch" default="$(find collision_avoidance_m100_gazebo)/launch/$(arg world)_$(arg mode).launch" />
+
+  <!--
+  <arg name="gui" default="true"/>
+  <arg name="args" default=""/>
+  -->
+  
+  <!-- New params -->
+  <arg name="avoidance" default="false" />
+
+  <!-- Load world and Gazebo -->
+  <include file="$(arg world_launch)">
+    <arg name="avoidance" value="$(arg avoidance)"/>
+  </include>
+
+  <!--<node name="gazebo" pkg="gazebo_ros" type="gzserver" args="$(find collision_avoidance_m100_gazebo)/worlds/$(arg world).world $(arg args)" respawn="false" output="screen"/>
+  
+  <group if="$(arg gui)">
+    <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
+  </group>
+  -->
+
+</launch>

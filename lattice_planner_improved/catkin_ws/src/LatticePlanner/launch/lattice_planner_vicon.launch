@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="mav_name" default="DjiMatrice" />
+  <arg name="namespace" default="/"/>
+  <group ns="$(arg namespace)">
+    <node name="latticePlanner_node" pkg="lattice_planner" type="latticePlanner_node" respawn="true" clear_params="true" output="screen">
+      <!-- <rosparam file="$(find mav_nonlinear_mpc)/resources/nonlinear_mpc_$(arg mav_name).yaml" /> -->
+      <param name="primitive_path" value="$(find lattice_planner)/generate_primitives/primitives/" />
+      <param name="number_of_primitive_groups" value="8" />
+      <param name="primitive_amount_group_1" value="10" />
+      <param name="primitive_amount_group_2" value="16" />
+      <param name="primitive_amount_group_3" value="30" />
+      <param name="primitive_amount_group_4" value="48" />
+      <param name="primitive_amount_group_5" value="32" />
+      <param name="primitive_amount_group_6" value="16" />
+      <param name="primitive_amount_group_7" value="16" />
+      <param name="primitive_amount_group_8" value="10" />
+      <remap from="/dji0/dji_sdk/local_position" to="/dji0/dji_sdk/vicon/local_position" />
+      <remap from="/dji0/dji_sdk/attitude" to="/dji0/dji_sdk/vicon/attitude" />
+      <remap from="/dji0/dji_sdk/velocity" to="/dji0/dji_sdk/vicon/velocity" />
+    </node>
+  </group>
+</launch>

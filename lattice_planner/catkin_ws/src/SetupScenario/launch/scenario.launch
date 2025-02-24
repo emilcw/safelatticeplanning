@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="namespace" default="/"/>
+  <arg name="test" default=""/>
+  <arg name="scenario" default=""/>
+  <arg name="scenario_parameter" default="-1"/>
+  <arg name="location_tolerance" default="0.01"/>
+
+  <arg name="respawn" default="false" />
+  <arg name="planning_time" default="3.0" />
+  <arg name="replanning_time" default="1.0" />
+  <arg name="dji_safety_radius_" default="1.0" />
+
+  <arg name="use_stand_still" default="true" />
+  <arg name="use_predictions" default="true" />
+  <arg name="use_geometric_secondary_search" default="true" />
+  <arg name="use_only_geometric_search" default="false" />
+  <arg name="plan_duration_minimum" default="5.0" />
+  <arg name="closed_set_type" default="SetWaitTime" />
+  <arg name="best_effort" default="true" />
+
+  <arg name="log_path" default="logs/" />
+  <arg name="log_name" default="" />
+  <arg name="seed" default="0" />
+  <arg name="enable_visualization_close_proximity" default="false"/>
+  <arg name="enable_visualization_grid" default="false"/>
+  <arg name="visualization_cube_range" default="5 1 0.5 0"/>
+  <arg name="octomap" default="/$(arg namespace)" />
+    
+  <group ns="$(arg namespace)">
+    <node name="setup_scenario" pkg="setup_scenario" type="latticePlanner_node" respawn="$(arg respawn)" clear_params="true" output="screen">
+      <param name="planning_time" value="$(arg planning_time)" />
+      <param name="replanning_time" value="$(arg replanning_time)" />
+      <param name="dji_safety_radius_" value="$(arg dji_safety_radius_)" />
+      
+      <param name="test" value="$(arg test)" />
+      <param name="scenario" value="$(arg scenario)" />
+      <param name="scenario_parameter" value="$(arg scenario_parameter)" />
+      <param name="location_tolerance" value="$(arg location_tolerance)" />
+      
+      <param name="use_sim_time" value="true" />
+      <param name="visualization_cube_range" value="$(arg visualization_cube_range)" />
+      <param name="enable_visualization_grid" value="$(arg enable_visualization_grid)" />
+      <param name="enable_visualization_close_proximity" value="$(arg enable_visualization_close_proximity)" />
+      <remap from="octomap_full" to="$(arg octomap)/octomap_full"/>
+      <remap from="teleport/pose" to="sim_pose_reset"/>
+
+      <param name="use_stand_still" value="$(arg use_stand_still)" />
+      <param name="use_geometric_secondary_search" value="$(arg use_geometric_secondary_search)" />
+      <param name="use_only_geometric_search" value="$(arg use_only_geometric_search)" />
+      <param name="plan_duration_minimum" value="$(arg plan_duration_minimum)" />
+      <param name="closed_set_type" value="$(arg closed_set_type)" />
+      <param name="best_effort" value="$(arg best_effort)" />
+      <param name="use_predictions" value="$(arg use_predictions)" />
+
+      <param name="log_name" value="$(arg log_name)" />
+      <param name="log_path" value="$(find setup_scenario)/$(arg log_path)" />
+      <param name="seed" value="$(arg seed)" />
+
+      <param name="primitive_path" value="$(find setup_scenario)/generate_primitives/primitives/" />
+      <param name="number_of_primitive_groups" value="15" />
+      <param name="primitive_amount_group_0" value="1" />
+      <param name="primitive_amount_group_1" value="10" />
+      <param name="primitive_amount_group_2" value="16" />
+      <param name="primitive_amount_group_3" value="30" />
+      <param name="primitive_amount_group_4" value="48" />
+      <param name="primitive_amount_group_5" value="32" />
+      <param name="primitive_amount_group_6" value="16" />
+      <param name="primitive_amount_group_7" value="16" />
+      <param name="primitive_amount_group_8" value="10" />
+      <param name="primitive_amount_group_9" value="30" />
+      <param name="primitive_amount_group_10" value="0" />
+      <param name="primitive_amount_group_11" value="0" />
+      <param name="primitive_amount_group_12" value="32" />
+      <param name="primitive_amount_group_13" value="16" />
+      <param name="primitive_amount_group_14" value="16" />
+    </node>
+
+    <!-- Launch Python node for collision detection -->
+    <node name="collision_detection_node" pkg="setup_scenario" type="collisions.py" output="screen">
+      <param name="dji_safety_radius_" value="$(arg dji_safety_radius_)" />
+    </node>
+  </group>
+</launch>

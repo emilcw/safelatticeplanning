@@ -1,0 +1,14 @@
+<launch>
+  <arg name="mav_name" default="DjiMatrice" />
+  <arg name="namespace" default="/"/>
+  <group ns="$(arg namespace)">
+    <node name="converter_djisdk_mav_node" pkg="converter_mav_dji_sdk" type="converter_djisdk_mav_node" respawn="true" clear_params="true" output="screen">
+      <rosparam file="$(find mav_nonlinear_mpc)/resources/nonlinear_mpc_$(arg mav_name).yaml" />
+  <!--
+      <remap from="/DjiMatrice/ground_truth/pose" to="/$(arg namespace)/ground_truth/pose" />
+      <remap from="/DjiMatrice/ground_truth/odometry" to="/$(arg namespace)/ground_truth/odometry" />
+      <remap from="/DjiMatrice/command/roll_pitch_yawrate_thrust" to="/$(arg namespace)/command/roll_pitch_yawrate_thrust" />
+  -->
+    </node>
+  </group>
+</launch>

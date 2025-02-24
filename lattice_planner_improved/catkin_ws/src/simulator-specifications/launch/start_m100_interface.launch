@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!--Used in spawn_start_m100.launch
+Start the interface for the dji100 model and connects it to the system.-->
+
+<launch>
+  <arg name='name' default="m100_me" />
+  <arg name='frame' default="world" />
+  <arg name='keep_state' default='1' />
+  <arg name='controlled' default='1' />
+  <arg name="x" default='0.0'/>
+  <arg name="y" default='0.0'/>
+  <arg name="z" default='1.0'/>
+
+  <node name="m100_simulator_interface" pkg="collision_avoidance_m100_gazebo" type="m100_simulator_interface" respawn="true" output="screen" ns="$(arg name)">
+    <param name='name' type="str" value="$(arg name)" />
+    <param name='frame' type="str" value='$(arg frame)' />
+    <param name='keep_state' type="bool" value='$(arg keep_state)' />
+    <param name='x' type="double" value='$(arg x)' />
+    <param name='y' type="double" value='$(arg y)' />
+    <param name='z' type="double" value='$(arg z)' />
+    <remap if="$(arg controlled)" from='pose' to='ground_truth/pose' />
+  </node>
+</launch>
+

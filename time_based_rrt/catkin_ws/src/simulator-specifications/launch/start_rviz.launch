@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="config" default="srg.rviz"/>
+  <arg name="name" default=""/>  
+  <arg name="args" default=""/>
+  <arg name="namespace" default="/"/>
+  
+  <group ns="$(arg namespace)">
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find collision_avoidance_m100_gazebo)/rviz/$(arg config) $(arg args)" respawn="false" output="screen"/>
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="TF_base_link_bridge" args="0 0 0  0 0 0 1 $(arg name)__base_link base_link"/> 
+    <node pkg="tf2_ros" type="static_transform_publisher" name="TF_camera_link_bridge" args="0 0 0  0 0 0 1 $(arg name)__camera_link camera_link"/> 
+    <!--node pkg="tf2_ros" type="static_transform_publisher" name="TF_camera_optical_frame_bridge" args="0 0 0  0 0 0 1 $(arg name)__camera_optical_frame camera_optical_frame"/--> 
+    <node pkg="tf2_ros" type="static_transform_publisher" name="TF_hokuyo_laser_link_bridge" args="0 0 0  0 0 0 1 $(arg name)__hokuyo_laser_link $(arg namespace)/hokuyo_laser_link"/>
+  </group>  
+
+</launch>

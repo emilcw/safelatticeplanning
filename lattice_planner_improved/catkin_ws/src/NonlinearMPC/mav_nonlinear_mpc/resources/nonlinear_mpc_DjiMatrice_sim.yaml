@@ -1,0 +1,55 @@
+
+## Controller Parameters:
+mass: 2.895
+roll_time_constant: 0.253
+pitch_time_constant: 0.267
+roll_gain: 1.101
+pitch_gain: 1.097
+linear_drag_coefficients: [ 0.010000 , 0.010000, 0.0000]
+
+## MORE AGGRESSIVE SIM-ONLY ("IDEAL" MOTION MODEL) FLIGHT PENALTIES (worked w/ control refs from traj)
+
+# dynamic config default values:
+q_x : 25
+q_y : 25
+q_z : 70
+
+# Seems to perform best w/o velocities and angles, angles I can understand as they are dubious approximations, but why not vel? 10Hz sampling?
+#q_vx : 7
+#q_vy : 7
+#q_vz : 18
+q_vx : 0.1
+q_vy : 0.1
+q_vz : 0.1
+
+#q_roll : 30
+#q_pitch: 30
+q_roll : 0.1
+q_pitch: 0.1
+
+r_roll  : 20
+r_pitch : 20 # default: 105
+r_thrust : 0.2
+
+roll_max: deg(28.0) # default
+pitch_max: deg(28.0) # default
+
+thrust_min: 5 # default
+#thrust_min: 8 
+thrust_max: 15 # default is 20
+#thrust_max: 12
+
+K_yaw: 1.8
+
+Ki_xy: 0.2
+Ki_z: 0.3
+position_error_integration_limit: 2
+antiwindup_ball: 0.4
+
+#enable_offset_free : true # default, disturbance correction. NOTE: Try turning off when thrust center calibrated, probably the KF model is wrong too...
+enable_offset_free : false
+#enable_integrator : true  # default, seems to be a bit unstable for agressive maneauvers, maybe only for position hold / trajectory following?
+enable_integrator : false
+
+sampling_time: 0.02 # IMPORTANT: set this equal to the rate of odometry msg
+prediction_sampling_time: 0.1

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!-- This launch file does not seem to be used. Its only called in scenario_example.launch -->
+
+
+<launch>
+  <!-- Motion name -->
+  <arg name="motion" default="circle"/>
+
+  <!-- Model name -->
+  <arg name="name" default="m100_me"/>
+
+  <!-- Initial position -->
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="0.3"/>
+
+  <!-- Motion arguments -->
+  <arg name="arg" default=""/>
+ 
+  <!-- Refresh rate -->
+  <arg name="hz" default="100"/>
+
+  <!-- -->
+  <node name="path_generator_$(arg name)" pkg="collision_avoidance_m100_gazebo" type="simulator_path_generation_nodelet" respawn="true" output="screen" clear_params="true">
+    <param name="motion" type="str" value="$(arg motion)" />
+    <param name='name' type="str" value="$(arg name)" />
+    <rosparam param="arg" subst_value="True">$(arg arg)</rosparam>
+    <param name="x" type="double" value="$(arg x)" />
+    <param name="y" type="double" value="$(arg y)" />
+    <param name="z" type="double" value="$(arg z)" />
+    <param name="hz" type="double" value="$(arg hz)" />
+  </node>
+  
+</launch>
+

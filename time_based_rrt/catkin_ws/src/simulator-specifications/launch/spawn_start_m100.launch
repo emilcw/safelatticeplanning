@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<!-- This launch file spawns and start the DJI100 in x,y,z as specified, used in simulation loop -->
+
+<launch>
+  <arg name="name" default="dji0"/>
+  <arg name='controlled' default='1' />
+  <arg name="x" default="0.0"/>
+  <arg name="y" default="0.0"/>
+  <arg name="z" default="1.0"/>
+
+  <!-- Spawn the DJI100 model -->
+  <include file="$(find collision_avoidance_m100_gazebo)/launch/spawn_m100.launch">
+    <arg name='name' value="$(arg name)" />
+    <arg name="base_link_frame" default="$(arg name)__base_link"/>
+    <arg name="x" value="$(arg x)"/>
+    <arg name="y" value="$(arg y)"/>
+    <arg name="z" value="$(arg z)"/>
+  </include>
+
+  <!-- Start the interface for the DJI100 model and connects it to the system -->
+  <include file="$(find collision_avoidance_m100_gazebo)/launch/start_m100_interface.launch">
+    <arg name='name' value="$(arg name)" />
+    <arg name='controlled' value="$(arg controlled)" />
+    <arg name="x" value="$(arg x)"/>
+    <arg name="y" value="$(arg y)"/>
+    <arg name="z" value="$(arg z)"/>
+  </include>
+
+</launch>

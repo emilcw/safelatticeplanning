@@ -1,0 +1,20 @@
+Dbg [parser.cc:489] No <sdf> element in file[data-string]
+Dbg [parser_urdf.cc:1499] extension [<gravity>true</gravity>] not converted from URDF, probably already in SDF format.
+Dbg [parser_urdf.cc:1499] extension [<sensor name="head_hokuyo_sensor" type="ray"><pose>0 0 0 0 0 0</pose><visualize>true</visualize><update_rate>40</update_rate><ray><scan><horizontal><samples>360</samples><resolution>1</resolution><min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle></horizontal></scan><range><min>0.2</min><max>40</max><resolution>0.025</resolution></range><noise><type>gaussian</type><mean>0.0</mean><stddev>0.0</stddev></noise></ray><plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_head_hokuyo_controller"><robotNamespace /><topicName>laser_scan</topicName><frameName>hokuyo_laser_link</frameName></plugin></sensor>] not converted from URDF, probably already in SDF format.
+Dbg [parser_urdf.cc:1499] extension [<sensor name="camera_camera_sensor" type="camera"><update_rate>10</update_rate><camera><pose>0.027 0 -0.027 0 0 0</pose><horizontal_fov>1.64060949687</horizontal_fov><image><format>R8G8B8</format><width>640</width><height>480</height></image><clip><near>0.01</near><far>100</far></clip></camera><plugin filename="libgazebo_ros_camera.so" name="camera_controller"><cameraName>camera</cameraName><alwaysOn>true</alwaysOn><updateRate>10</updateRate><imageTopicName>/dji_sdk/image_raw</imageTopicName><cameraInfoTopicName>/dji_sdk/camera_info</cameraInfoTopicName><frameName>camera_optical_frame</frameName><robotNamespace>/</robotNamespace></plugin></sensor>] not converted from URDF, probably already in SDF format.
+Dbg [parser_urdf.cc:2741] [base_link] has no parent joint
+Dbg [parser_urdf.cc:2782] creating collision for link [base_link] collision []
+Dbg [parser_urdf.cc:2827] creating visual for link [base_link] visual []
+Dbg [parser_urdf.cc:2782] creating collision for link [camera_link] collision []
+Dbg [parser_urdf.cc:2827] creating visual for link [camera_link] visual []
+Dbg [parser_urdf.cc:2049] inserting extension with reference [camera_link] into link.
+Dbg [parser_urdf.cc:2663] urdf2sdf: link[camera_optical_frame] has no inertia, parent joint [camera_optical_joint] ignored.
+Dbg [parser_urdf.cc:2669] urdf2sdf: link[camera_optical_frame] has no inertia, not modeled in sdf
+Dbg [parser_urdf.cc:2782] creating collision for link [hokuyo_laser_link] collision []
+Dbg [parser_urdf.cc:2827] creating visual for link [hokuyo_laser_link] visual []
+Dbg [parser_urdf.cc:2049] inserting extension with reference [hokuyo_laser_link] into link.
+Dbg [parser.cc:471] Converting a deprecated source[urdf string].
+Dbg [Converter.cc:73] Version[1.5] to Version[1.6]
+  Please use the gz sdf tool to update your SDF files.
+    $ gz sdf -c [sdf_file]
+Dbg [parser.cc:401] Parsing from urdf.
