@@ -12,7 +12,6 @@ This new planner, Safe Lattice Planner (SLP) is evaluated in the provided benchm
 For more information, please see our [paper](liu.se).
 
 ## System Requirements
-System requirements:
 - Docker version 27.5.1, build 9f9e405
 - OS: Ubuntu 22.04.5 LTS
 - Kernel: 6.8.0-52-generic
