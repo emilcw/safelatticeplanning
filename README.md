@@ -1,70 +1,76 @@
-# Safe Dynamic Motion Planning or Dynamic Lattice Planning
+# Safe Dynamic Motion Planning or Dynamic Lattice Planning 
 
-![Alt text](pictures/image.png)
+<img src="pictures/problem_enhanced2.png" alt="Alt Text" width="700" height="500">
+
+Image: Crosswalk3 scenario where DJI100 navigates through a crowd of dynamic obstacles. 
 
 ## Information
-This project investigates the Lattice Planner first developed by [[1]](https://ieeexplore.ieee.org/document/8618964) and then enhanced in [[2]](https://ieeexplore.ieee.org/document/9385931). This project consists of three contributions
+This project extends the Receding-Horizon Lattice Planner (RHLP) [[1]](https://ieeexplore.ieee.org/document/8618964)[[2]](https://ieeexplore.ieee.org/document/9385931) with new improvements to handle the edge cases in the dynamic environment. 
 
-- A new benchmark to compare dynamic motion planners
-- A comparison of the proposed Lattice Planner in the benchmark against temporal RRT*
-- Proposing the Lattice Planner as a novel method to perform dynamic and temporal motion planning.
+This new planner, Safe Lattice Planner (SLP) is evaluated in the provided benchmark against the baselines RRT*, Temporal RRT* and RHLP. This repository contains the benchmark, the baselines and SLP. This has been built in a Docker environment.
+
+For more information, please see our [paper](liu.se).
 
 ## System Requirements
-TODO
+System requirements:
+- Docker version 27.5.1, build 9f9e405
+- OS: Ubuntu 22.04.5 LTS
+- Kernel: 6.8.0-52-generic
+- Driver Version: 535.183.01   CUDA Version: 12.2 (Dual NVIDIA GeForce RTX 2080 Ti)
+- nvidia-container-toolkit: 1.14.3-1
 
 ## Installation and execution
-Currently the system can be started in two ways, where Option 1 is tedious and Option 2 is nice.
-- Clone the repository
-- Set up [Rootless docker mode](https://docs.docker.com/engine/security/rootless/).
-
-#### Option 1
-- Use the **dev_env.sh** script to start the docker environment as described below and 
-```
-./dev_env.sh start lattice_planner
-
-# Create 11 terminals with the command below
-./dev_env.sh bash lattice_planner 
-
-# In each terminal 
-cd start_scripts
-
-# Then run following commands once in the terminals to start all the ROS nodes
-
-./catkin_build.sh
-./start_lattice_planner
-./start_m100_simulator_interface.sh [world] [mode] (inget ger cafe_static)
-./spawn_dji100.sh [x] [y] [z] [name] 
-(Genom att ändra namn kan du spawna in flera drönare på flera olika positioner genom att bara köra om scripet, default (0,0,1) och "dji0")
-./start_motion_model_simulator.sh
-./start_mpc.sh
-./start_converter_djisdk_mav_node.sh
-./start_octomap_ground_truth.sh 
-(Optional, only displays ground truth and gets coverage)
-./start_octomap.sh
-./start_laser_collector.sh
-./start_gazebo2rviz.sh
-./start_rviz.sh
-```
-
-#### Option 2
-- Modify the sdmp_paramters.yaml scrips as desired
-
-```
-
-#If you have modified the code, run this to compile
-./dev_env.sh make lattice_planner
-
-# To start the simulation loop
-python3 sdmp.py
-```
-
+TODO
+Please see the [Wiki](liu.se).
 
 ## Showcase
 TODO
 
 ## Credits
-This work has been developed by Emil Wiman with the help and support of the members at the [Division of Artificial Intelligence and Integrated Computer Systems](https://liu.se/en/organisation/liu/ida/aiics) at [Linköping University](https://liu.se/en).
+If you find this work useful, please cite our paper.
+
+*Safe Lattice Planning for Motion Planning with Dynamic Obstacles*
+```
+[INSERT CITATION]
+```
+
+This work has been developed by Emil Wiman and Mattias Tiger with the help and support of the members at the [Division of Artificial Intelligence and Integrated Computer Systems](https://liu.se/en/organisation/liu/ida/aiics) at [Linköping University](https://liu.se/en).
+
+-----------------------------------------------------------------------------------------------
+
+This work builds upon the work from two previous papers, they are listed here for completeness.
+
+*Enhancing Lattice-Based Motion Planning With Introspective Learning and Reasoning*
+```
+@ARTICLE{9385931,
+  author={Tiger, Mattias and Bergström, David and Norrstig, Andreas and Heintz, Fredrik},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Enhancing Lattice-Based Motion Planning With Introspective Learning and Reasoning}, 
+  year={2021},
+  volume={6},
+  number={3},
+  pages={4385-4392},
+  keywords={Planning;Safety;Collision avoidance;Trajectory;Dynamics;Uncertainty;Lattices;Motion and path planning;collision avoidance},
+  doi={10.1109/LRA.2021.3068550}}
+```
+
+*Receding-Horizon Lattice-Based Motion Planning with Dynamic Obstacle Avoidance*
+```
+@INPROCEEDINGS{8618964,
+  author={Andersson, Olov and Ljungqvist, Oskar and Tiger, Mattias and Axehill, Daniel and Heintz, Fredrik},
+  booktitle={2018 IEEE Conference on Decision and Control (CDC)}, 
+  title={Receding-Horizon Lattice-Based Motion Planning with Dynamic Obstacle Avoidance}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={4467-4474},
+  keywords={Planning;Vehicle dynamics;Dynamics;Lattices;Trajectory;Navigation;Real-time systems},
+  doi={10.1109/CDC.2018.8618964}}
+```
+
+
+
 
 ## Contact
-For questions and remarks please contact the developers.
+For questions and remarks please contact the developers by supplying an issue.
 
