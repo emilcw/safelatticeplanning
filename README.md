@@ -20,8 +20,69 @@ System requirements:
 - nvidia-container-toolkit: 1.14.3-1
 
 ## Installation and execution
-TODO
-Please see the [Wiki](liu.se).
+
+### Installation
+# Installation of the daeplanner
+
+## Possible Prerequisites
+The system has been tested with the following versions of drivers etc. It might work with other combinations of versions. For completeness are they listed here.
+
+- Docker version 24.0.7, build afdd53b (`docker -v`)
+- OS: Ubuntu 22.04.3 LTS (`lsb_release -a`)
+- Kernel: 6.2.0-37-generic (`uname -r`)
+- NVIDIA DRIVER: 535.129.03 (`nvidia-smi`)
+- CUDA 12.2
+- nvidia-container-toolkit: 1.14.3-1 (`apt-cache policy nvidia-container-toolkit`) 
+- Python 3.10.12
+
+## Installation instructions
+Follow the following steps to be able to run the planners.
+
+1. Install and setup your [docker solution](https://docs.docker.com/engine/security/rootless/).
+2. If you haven't already, clone the repository `git@github.com:emilcw/safelatticeplanning.git` and go to that folder in your terminal environment.
+3. Inside every planner's folder, it is required to clone a [gazebo models folder](https://github.com/osrf/gazebo_models). This is to get the proper models for each world. Like this:
+  * safelatticeplanning/rrt_star/gazebo_models
+  * safelatticeplanning/time_based_rrt/gazebo_models
+  * safelatticeplanning/lattice_planner/gazebo_models
+  * safelatticeplanning/lattice_planner_improved/gazebo_models
+4. The script "dev_env.sh" is used to manage docker. It is used in the following way: `./dev_env.sh COMMAND IMAGE EXTRA`
+
+- To build an image, run: `./dev_env.sh build IMAGE`
+  * Available images (one for each planner currently)
+    - rrt_star
+    - time_based_rrt
+    - lattice_planner
+    - lattice_planner_improved
+  * So for example run `./dev_env.sh build lattice_planner_improved` to build the lattice_planner_improved container.
+- To start a docker environment, run `./dev_env.sh start IMAGE`
+  - So for example run `./dev_env.sh start lattice_planner_improved` to start the lattice_planner_improved container
+- To open another terminal inside the same docker, run `./dev_env.sh bash IMAGE`
+  - So for example run `./dev_env.sh lattice_planner_improved daep` to open another terminal inside the lattice_planner_improved container.
+
+Other available commands:
+ - `./dev_env.sh make IMAGE` - build catkin_ws
+ - `./dev_env.sh kill IMAGE`  - kill container
+
+### Using the benchmark
+To run the benchmark, utilize the provided simulation loop.
+1. Configure `sdmp_parameters.yaml` as desired, see the file for explanations.
+2. Run the python script to start the simulation and the data collection: `python3 sdmp.py`
+
+This should start the simualtion environment, the selected motion planner and the scenario. The scenario will be run until the simulation time reaches its maximum or until the DJI100 reaches its goal. Data is collected continuously. Data wil be saved in `/experiment_data_sdmp`.
+
+### Visualize data
+To visualize the data, use the provided visulization scrips.
+1. Copy `/experiment_data_sdmp` into `/visualization`
+2. Configure `/visualize/visualize_sdmp.py`, namely edit:
+    * simulation_runs
+    * SIMULATION_TIME
+    * EXPERIMENT_DATA_PATH
+    * modes
+    * scenarios
+    * planners
+3. Run the visualization script either by:
+    * `python3 create_results.py`
+    * Go into container (`./dev_env start visualization`) and `python3 visualize_sdmp.py`
 
 ## Showcase
 TODO

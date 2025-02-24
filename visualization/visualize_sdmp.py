@@ -48,7 +48,7 @@ worlds = [
     "granso2"
 ]
 
-"""
+
 scenarios = [
     "empty",
     "dynamic",
@@ -79,21 +79,6 @@ scenarios = [
     "survival",
     "blind_corner",
 ]
-"""
-
-scenarios = [
-    "old_survival"
-]
-
-"""
- "dynamic3_static",
-"dynamic2_static",
-"indoor11_static",
-"corridor2_static",
-"blind_corner_static",
-"survival_static",
-"""
-
 
 tests = ["single",
          "full",
@@ -112,7 +97,6 @@ planners = ["rrt_star",
 
  #"A-star-low-res",
  #"A-star-high-res"
-
 
 RRT_STAR = "rrt_star"
 TIME_BASED_RRT = "time_based_rrt"
