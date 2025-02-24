@@ -58,7 +58,7 @@ To run the benchmark, utilize the provided simulation loop.
 This should start the simualtion environment, the selected motion planner and the scenario. The scenario will be run until the simulation time reaches its maximum or until the DJI100 reaches its goal. Data is collected continuously. Data wil be saved in `/experiment_data_sdmp`.
 
 ### Visualize data
-To visualize the data, use the provided visulization scrips.
+To visualize the data, use the provided visulization script.
 1. Copy `/experiment_data_sdmp` into `/visualization`
 2. Configure `/visualize/visualize_sdmp.py`, namely edit:
     * simulation_runs
