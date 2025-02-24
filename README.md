@@ -1,4 +1,4 @@
-# Safe Dynamic Motion Planning or Dynamic Lattice Planning 
+# Safe Lattice Planning for Motion Planning in Dynamic Environments
 
 <img src="pictures/problem_enhanced2.png" alt="Alt Text" width="700" height="500">
 
