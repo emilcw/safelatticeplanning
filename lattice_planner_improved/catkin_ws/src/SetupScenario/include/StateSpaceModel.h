@@ -58,7 +58,7 @@ class ConstantVelocityModel : public StateSpaceModel {
       double max_velocity = std::max(std::max(std::abs(state.velocity.x()), std::abs(state.velocity.y())), std::abs(state.velocity.z()));
       
    
-      prediction.r += (dt * max_velocity * 0.5 + 30);
+      prediction.r += (dt * max_velocity * 0.5);
 
       return prediction;
     }
