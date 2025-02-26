@@ -71,7 +71,9 @@ To visualize the data, use the provided visulization script.
     * Go into container (`./dev_env start visualization`) and `python3 visualize_sdmp.py`
 
 ## Showcase
-TODO
+![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/504b42f8-ae96-4526-9f58-1223b23d1a2e)
+
+*Warehouse3*
 
 ## Credits
 If you find this work useful, please cite our paper.
