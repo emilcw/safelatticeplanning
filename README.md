@@ -11,7 +11,7 @@ This new planner, Safe Lattice Planner (SLP) is evaluated in the provided benchm
 
 For more information, please see our [paper](liu.se).
 
-## System Requirements
+## (Recommended) System Requirements
 - Docker version 27.5.1, build 9f9e405
 - OS: Ubuntu 22.04.5 LTS
 - Kernel: 6.8.0-52-generic
@@ -24,7 +24,7 @@ For more information, please see our [paper](liu.se).
 ### Installation
 Follow the following steps to be able to run the planners.
 
-1. Install and setup your [docker solution](https://docs.docker.com/engine/security/rootless/).
+1. Install and setup your [docker solution](https://docs.docker.com/engine/security/rootless/). If you are in AI-academy, use [this](https://gitlab.liu.se/ai-academy/ros-base) tutorial.
 2. If you haven't already, clone the repository `git@github.com:emilcw/safelatticeplanning.git` and go to that folder in your terminal environment.
 3. Inside every planner's folder, it is required to clone a [gazebo models folder](https://github.com/osrf/gazebo_models). This is to get the proper models for each world. Like this:
   * safelatticeplanning/rrt_star/gazebo_models
@@ -40,18 +40,22 @@ Follow the following steps to be able to run the planners.
     - lattice_planner
     - lattice_planner_improved
   * So for example run `./dev_env.sh build lattice_planner_improved` to build the lattice_planner_improved container.
+
+- Before running the code, we need to compile it with `./dev_env.sh make IMAGE`.
+  - So for example run `./dev_env.sh make lattice_planner_improved` to build the `catkin_ws`.   
+
 - To start a docker environment, run `./dev_env.sh start IMAGE`
   - So for example run `./dev_env.sh start lattice_planner_improved` to start the lattice_planner_improved container
 - To open another terminal inside the same docker, run `./dev_env.sh bash IMAGE`
   - So for example run `./dev_env.sh lattice_planner_improved daep` to open another terminal inside the lattice_planner_improved container.
 
 Other available commands:
- - `./dev_env.sh make IMAGE` - build catkin_ws
  - `./dev_env.sh kill IMAGE`  - kill container
 
 ### Using the benchmark
 To run the benchmark, utilize the provided simulation loop.
 1. Configure `sdmp_parameters.yaml` as desired, see the file for explanations.
+2. Compile the code for the planners you want to test using make (see above).
 2. Run the python script to start the simulation and the data collection: `python3 sdmp.py`
 
 This should start the simualtion environment, the selected motion planner and the scenario. The scenario will be run until the simulation time reaches its maximum or until the DJI100 reaches its goal. Data is collected continuously. Data wil be saved in `/experiment_data_sdmp`.
