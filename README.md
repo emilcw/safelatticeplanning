@@ -42,7 +42,8 @@ Follow the following steps to be able to run the planners.
   * So for example run `./dev_env.sh build lattice_planner_improved` to build the lattice_planner_improved container.
 
 - Before running the code, we need to compile it with `./dev_env.sh make IMAGE`.
-  - So for example run `./dev_env.sh make lattice_planner_improved` to build the `catkin_ws`.   
+  - So for example run `./dev_env.sh make lattice_planner_improved` to build the `catkin_ws`.
+  - OBS! The first time you do this, `make`will not work. Instead start the docker environment of your choice, go to the `catkin_ws` folder and run `catkin build`manually. After this, `make`should work.  
 
 - To start a docker environment, run `./dev_env.sh start IMAGE`
   - So for example run `./dev_env.sh start lattice_planner_improved` to start the lattice_planner_improved container
@@ -55,7 +56,8 @@ Other available commands:
 ### Using the benchmark
 To run the benchmark, utilize the provided simulation loop.
 1. Configure `sdmp_parameters.yaml` as desired, see the file for explanations.
-2. Compile the code for the planners you want to test using make (see above).
+2. Build the docker environment for the planners you want to test.
+2. Compile the code for the planners you want to test using make (see above). Note that you have to build it manually the first time.
 2. Run the python script to start the simulation and the data collection: `python3 sdmp.py`
 
 This should start the simualtion environment, the selected motion planner and the scenario. The scenario will be run until the simulation time reaches its maximum or until the DJI100 reaches its goal. Data is collected continuously. Data wil be saved in `/experiment_data_sdmp`.

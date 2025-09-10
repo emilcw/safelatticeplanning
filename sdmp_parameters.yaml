@@ -81,12 +81,12 @@ static_scenarios:
 #- wall3D
 
 dynamic_scenarios:
-- blind_corner
+#- blind_corner
 #- dynamic
 #- dynamic2
 #- dynamic3
 #- corridor2
-#- indoor11
+- indoor11
 #- survival
 #- old_survival
 #- corridor
