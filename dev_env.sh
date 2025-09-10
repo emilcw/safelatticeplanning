@@ -15,14 +15,13 @@ if [[ "$COMMAND" = "help" || "$COMMAND" = "-h" || "$COMMAND" = "--help" || "$COM
     echo "   start          - Start the container (builds it if it has changed)."
     echo "   bash           - Access the running container from the terminal."
     echo "   kill           - Kill the running container."
+    echo "   make           - Make the environment. "
 
     echo " Images:"     
-    echo "   dep             - Dynamic exploration planner"
-    echo "   aep             - Autonomous exploration planner"
-    echo "   nbvp            - Next best view planner"
-    echo "   daep            - Dynamic Autonomous exploration planner"
-    echo "   lattice_planner - Lattice planner"
-    echo "   time_based_rrt  - RRT planner from DAEP    "		
+    echo "   lattice_planner          - old lattice planner"
+    echo "   lattice_planner_improved - new lattice planner"
+    echo "   rrt_star                 - rrt star"
+    echo "   time_based               - time based rrt star"
     echo "   or any other image in images/"
     exit 0
 fi
@@ -31,7 +30,7 @@ fi
 
 
 if [[ "$COMMAND" = "build" ]]; then
-    docker build $IMAGE_PATH -t $IMAGE_NAME --quiet
+    docker build $IMAGE_PATH -t $IMAGE_NAME
     exit 0
 fi
 
