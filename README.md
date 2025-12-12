@@ -95,16 +95,16 @@ If you find this work useful, please cite our paper.
 
 *Safe Lattice Planning for Motion Planning with Dynamic Obstacles*
 ```
-@INPROCEEDINGS{Wiman2025SafeLattice,
+@INPROCEEDINGS{11247023,
   author={Wiman, Emil and Tiger, Mattias},
   booktitle={2025 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
   title={Safe Lattice Planning for Motion Planning with Dynamic Obstacles}, 
   year={2025},
   volume={},
   number={},
-  pages={},
-  keywords={Motion planning;Dynamic environments;Lattice planning;Autonomous systems;Safe robotics}
-}
+  pages={9287-9294},
+  keywords={Search methods;Dynamics;Lattices;Benchmark testing;Real-time systems;Planning;Safety;Trajectory;Intelligent robots;Resilience},
+  doi={10.1109/IROS60139.2025.11247023}}
 ```
 
 This work has been developed by Emil Wiman and Mattias Tiger with the help and support of the members at the [Division of Artificial Intelligence and Integrated Computer Systems](https://liu.se/en/organisation/liu/ida/aiics) at [Linköping University](https://liu.se/en).
