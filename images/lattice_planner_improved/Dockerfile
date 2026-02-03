@@ -142,6 +142,8 @@ RUN apt-get update \
     libsfml-dev \
     libcanberra-gtk-module \
     openssh-client \
+    gnome-terminal \
+    dbus-x11 \
     && rm -rf /var/lib/apt/lists/*
 
 # ---------- Install CMake (version >= 3.14.5) ----------
