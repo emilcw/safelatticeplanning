@@ -33,6 +33,8 @@ Follow the following steps to be able to run the planners.
   * safelatticeplanning/lattice_planner_improved/gazebo_models
 4. The script "dev_env.sh" is used to manage docker. It is used in the following way: `./dev_env.sh COMMAND IMAGE EXTRA`
 
+- Before you start the container the first time, on your host run `xhost +local:root` to allow docker to visualize GUI applications.
+- Also on your host install [nvidia-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html). (Make sure you have run sudo apt-get update before you try to install the package. It might be problems with the "&&" as advised [here](https://github.com/NVIDIA/nvidia-docker/issues/1034#issuecomment-520282450) or [here](https://github.com/NVIDIA/nvidia-docker/issues/1243#issuecomment-615170541).)
 - To build an image, run: `./dev_env.sh build IMAGE`
   * Available images (one for each planner currently)
     - rrt_star
